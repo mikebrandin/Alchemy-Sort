@@ -7,51 +7,13 @@
 	objects = {
 
 /* Begin PBXFileReference section */
-		27FF233A2D91C3D400BFCEED /* Alchemy Sort.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Alchemy Sort.app"; sourceTree = BUILT_PRODUCTS_DIR; };
-		27FF234B2D91C3D400BFCEED /* Alchemy Sort.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Alchemy Sort.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		272A87D82D91E1FE00301DCA /* Alchemy Sort.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Alchemy Sort.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
-/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
-		27FF235D2D91C3D500BFCEED /* Exceptions for "Alchemy Sort Shared" folder in "Alchemy Sort iOS" target */ = {
-			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
-			membershipExceptions = (
-				Actions.sks,
-				Assets.xcassets,
-				GameScene.sks,
-				GameScene.swift,
-			);
-			target = 27FF23392D91C3D400BFCEED /* Alchemy Sort iOS */;
-		};
-		27FF23612D91C3D500BFCEED /* Exceptions for "Alchemy Sort Shared" folder in "Alchemy Sort macOS" target */ = {
-			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
-			membershipExceptions = (
-				Actions.sks,
-				Assets.xcassets,
-				GameScene.sks,
-				GameScene.swift,
-			);
-			target = 27FF234A2D91C3D400BFCEED /* Alchemy Sort macOS */;
-		};
-/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
-
 /* Begin PBXFileSystemSynchronizedRootGroup section */
-		27FF23312D91C3D300BFCEED /* Alchemy Sort Shared */ = {
-			isa = PBXFileSystemSynchronizedRootGroup;
-			exceptions = (
-				27FF235D2D91C3D500BFCEED /* Exceptions for "Alchemy Sort Shared" folder in "Alchemy Sort iOS" target */,
-				27FF23612D91C3D500BFCEED /* Exceptions for "Alchemy Sort Shared" folder in "Alchemy Sort macOS" target */,
-			);
-			path = "Alchemy Sort Shared";
-			sourceTree = "<group>";
-		};
 		27FF233C2D91C3D400BFCEED /* Alchemy Sort iOS */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
 			path = "Alchemy Sort iOS";
-			sourceTree = "<group>";
-		};
-		27FF234C2D91C3D400BFCEED /* Alchemy Sort macOS */ = {
-			isa = PBXFileSystemSynchronizedRootGroup;
-			path = "Alchemy Sort macOS";
 			sourceTree = "<group>";
 		};
 /* End PBXFileSystemSynchronizedRootGroup section */
@@ -64,33 +26,15 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		27FF23482D91C3D400BFCEED /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
 		27FF232C2D91C3D300BFCEED = {
 			isa = PBXGroup;
 			children = (
-				27FF23312D91C3D300BFCEED /* Alchemy Sort Shared */,
 				27FF233C2D91C3D400BFCEED /* Alchemy Sort iOS */,
-				27FF234C2D91C3D400BFCEED /* Alchemy Sort macOS */,
-				27FF233B2D91C3D400BFCEED /* Products */,
+				272A87D82D91E1FE00301DCA /* Alchemy Sort.app */,
 			);
-			sourceTree = "<group>";
-		};
-		27FF233B2D91C3D400BFCEED /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				27FF233A2D91C3D400BFCEED /* Alchemy Sort.app */,
-				27FF234B2D91C3D400BFCEED /* Alchemy Sort.app */,
-			);
-			name = Products;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -115,29 +59,7 @@
 			packageProductDependencies = (
 			);
 			productName = "Alchemy Sort iOS";
-			productReference = 27FF233A2D91C3D400BFCEED /* Alchemy Sort.app */;
-			productType = "com.apple.product-type.application";
-		};
-		27FF234A2D91C3D400BFCEED /* Alchemy Sort macOS */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 27FF23622D91C3D500BFCEED /* Build configuration list for PBXNativeTarget "Alchemy Sort macOS" */;
-			buildPhases = (
-				27FF23472D91C3D400BFCEED /* Sources */,
-				27FF23482D91C3D400BFCEED /* Frameworks */,
-				27FF23492D91C3D400BFCEED /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			fileSystemSynchronizedGroups = (
-				27FF234C2D91C3D400BFCEED /* Alchemy Sort macOS */,
-			);
-			name = "Alchemy Sort macOS";
-			packageProductDependencies = (
-			);
-			productName = "Alchemy Sort macOS";
-			productReference = 27FF234B2D91C3D400BFCEED /* Alchemy Sort.app */;
+			productReference = 272A87D82D91E1FE00301DCA /* Alchemy Sort.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -153,9 +75,6 @@
 					27FF23392D91C3D400BFCEED = {
 						CreatedOnToolsVersion = 16.2;
 					};
-					27FF234A2D91C3D400BFCEED = {
-						CreatedOnToolsVersion = 16.2;
-					};
 				};
 			};
 			buildConfigurationList = 27FF23302D91C3D300BFCEED /* Build configuration list for PBXProject "Alchemy Sort" */;
@@ -168,25 +87,17 @@
 			mainGroup = 27FF232C2D91C3D300BFCEED;
 			minimizedProjectReferenceProxies = 1;
 			preferredProjectObjectVersion = 77;
-			productRefGroup = 27FF233B2D91C3D400BFCEED /* Products */;
+			productRefGroup = 27FF232C2D91C3D300BFCEED;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
 				27FF23392D91C3D400BFCEED /* Alchemy Sort iOS */,
-				27FF234A2D91C3D400BFCEED /* Alchemy Sort macOS */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
 		27FF23382D91C3D400BFCEED /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		27FF23492D91C3D400BFCEED /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -203,13 +114,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		27FF23472D91C3D400BFCEED /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin XCBuildConfiguration section */
@@ -218,12 +122,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = AR8GNUNY73;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.games";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
-				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UIStatusBarHidden = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
@@ -233,8 +138,9 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.mikebrandin.Alchemy-Sort.Alchemy-Sort";
+				PRODUCT_BUNDLE_IDENTIFIER = com.mikebrandin.AlchemySort;
 				PRODUCT_NAME = "Alchemy Sort";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SDKROOT = iphoneos;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -247,12 +153,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = AR8GNUNY73;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.games";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
-				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UIStatusBarHidden = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
@@ -262,67 +169,14 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.mikebrandin.Alchemy-Sort.Alchemy-Sort";
+				PRODUCT_BUNDLE_IDENTIFIER = com.mikebrandin.AlchemySort;
 				PRODUCT_NAME = "Alchemy Sort";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SDKROOT = iphoneos;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
-			};
-			name = Release;
-		};
-		27FF23632D91C3D500BFCEED /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_ENTITLEMENTS = "Alchemy Sort macOS/Alchemy_Sort_macOS.entitlements";
-				CODE_SIGN_STYLE = Automatic;
-				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 1;
-				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_KEY_NSHumanReadableCopyright = "";
-				INFOPLIST_KEY_NSMainStoryboardFile = Main;
-				INFOPLIST_KEY_NSPrincipalClass = NSApplication;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/../Frameworks",
-				);
-				MACOSX_DEPLOYMENT_TARGET = 15.2;
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.mikebrandin.Alchemy-Sort.Alchemy-Sort";
-				PRODUCT_NAME = "Alchemy Sort";
-				SDKROOT = macosx;
-				SWIFT_EMIT_LOC_STRINGS = YES;
-				SWIFT_VERSION = 5.0;
-			};
-			name = Debug;
-		};
-		27FF23642D91C3D500BFCEED /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_ENTITLEMENTS = "Alchemy Sort macOS/Alchemy_Sort_macOS.entitlements";
-				CODE_SIGN_STYLE = Automatic;
-				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 1;
-				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_KEY_NSHumanReadableCopyright = "";
-				INFOPLIST_KEY_NSMainStoryboardFile = Main;
-				INFOPLIST_KEY_NSPrincipalClass = NSApplication;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/../Frameworks",
-				);
-				MACOSX_DEPLOYMENT_TARGET = 15.2;
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.mikebrandin.Alchemy-Sort.Alchemy-Sort";
-				PRODUCT_NAME = "Alchemy Sort";
-				SDKROOT = macosx;
-				SWIFT_EMIT_LOC_STRINGS = YES;
-				SWIFT_VERSION = 5.0;
 			};
 			name = Release;
 		};
@@ -457,15 +311,6 @@
 			buildConfigurations = (
 				27FF235F2D91C3D500BFCEED /* Debug */,
 				27FF23602D91C3D500BFCEED /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		27FF23622D91C3D500BFCEED /* Build configuration list for PBXNativeTarget "Alchemy Sort macOS" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				27FF23632D91C3D500BFCEED /* Debug */,
-				27FF23642D91C3D500BFCEED /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

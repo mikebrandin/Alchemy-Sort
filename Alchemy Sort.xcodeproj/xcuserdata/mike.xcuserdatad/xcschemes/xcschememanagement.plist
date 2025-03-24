@@ -9,10 +9,13 @@
 			<key>orderHint</key>
 			<integer>1</integer>
 		</dict>
-		<key>Alchemy Sort macOS.xcscheme_^#shared#^_</key>
+	</dict>
+	<key>SuppressBuildableAutocreation</key>
+	<dict>
+		<key>27FF23392D91C3D400BFCEED</key>
 		<dict>
-			<key>orderHint</key>
-			<integer>0</integer>
+			<key>primary</key>
+			<true/>
 		</dict>
 	</dict>
 </dict>
