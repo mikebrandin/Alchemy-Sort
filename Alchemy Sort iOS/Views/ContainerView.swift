@@ -6,8 +6,8 @@ struct ContainerView: View {
     let index: Int
     
     private let containerWidth: CGFloat = 100
-    private let containerHeight: CGFloat = 200
-    private let elementWidth: CGFloat = 25
+    private let containerHeight: CGFloat = 100
+    private let elementWidth: CGFloat = 34
     private let elementHeight: CGFloat = 22
     
     var body: some View {
@@ -19,7 +19,7 @@ struct ContainerView: View {
                         .fill(element.color)
                         .frame(width: elementWidth, height: elementHeight)
                 }
-                Spacer(minLength: 10)
+                Spacer(minLength: 0)
             }
             .frame(width: elementWidth)
             .clipShape(
