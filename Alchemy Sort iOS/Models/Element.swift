@@ -7,21 +7,14 @@
 
 import SwiftUI
 
-enum ElementType: String, CaseIterable {
-    case red, blue, green, yellow, purple // 5 colors
-    
-    var color: Color {
-        switch self {
-        case .red: return .red
-        case .blue: return .blue
-        case .green: return .green
-        case .yellow: return .yellow
-        case .purple: return .purple
-        }
-    }
+enum ElementType {
+    case liquid
+    case solid
+    case gas
 }
 
 struct Element: Identifiable {
     let id = UUID()
-    var type: ElementType
+    let type: ElementType
+    let color: Color
 }

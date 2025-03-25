@@ -5,75 +5,48 @@ struct ContainerView: View {
     let container: Container
     let index: Int
     
-    private let tubeWidth: CGFloat = 100
-    private let tubeHeight: CGFloat = 200
-    private let liquidWidth: CGFloat = 60
-    private let coordinateSpace = "gameBoardSpace"
+    private let containerWidth: CGFloat = 100
+    private let containerHeight: CGFloat = 200
+    private let elementWidth: CGFloat = 25
+    private let elementHeight: CGFloat = 22
     
-    @State private var dragOffset: CGSize = .zero
-    @State private var isDragging = false
-    @State private var dropLocation: CGPoint? = nil
-
     var body: some View {
         ZStack(alignment: .bottom) {
+            VStack(spacing: 0) {
+                Spacer(minLength: 20)
+                ForEach(container.elements.reversed()) { element in
+                    Rectangle()
+                        .fill(element.color)
+                        .frame(width: elementWidth, height: elementHeight)
+                }
+                Spacer(minLength: 10)
+            }
+            .frame(width: elementWidth)
+            .clipShape(
+                RoundedRectangle(cornerRadius: elementWidth/2)
+            )
+            
             Image("test_tube")
                 .resizable()
                 .aspectRatio(contentMode: .fit)
-                .frame(width: tubeWidth, height: tubeHeight)
-                .overlay(
-                    VStack(spacing: 0) {
-                        Spacer(minLength: 20)
-                        ForEach(container.elements.reversed()) { element in
-                            element.type.color
-                                .frame(width: liquidWidth, height: 25)
-                                .cornerRadius(5)
-                                .padding(.horizontal, (tubeWidth - liquidWidth)/2)
-                        }
-                    }
-                    .padding(.bottom, 10)
-                )
+                .frame(width: containerWidth, height: containerHeight)
         }
-        .coordinateSpace(name: coordinateSpace) // Add this modifier
-        .offset(dragOffset)
-        .zIndex(isDragging ? 1 : 0)
+        .scaleEffect(viewModel.selectedContainerIndex == index ? 1.1 : 1.0)
+        .overlay(
+            RoundedRectangle(cornerRadius: 100)
+                .stroke(viewModel.selectedContainerIndex == index ? Color.yellow : Color.clear, lineWidth: 3)
+        )
+        .animation(.spring(), value: viewModel.selectedContainerIndex == index)
+        .onTapGesture {
+            viewModel.handleContainerTap(at: index)
+        }
         .background(
-            GeometryReader { geometry in
+            GeometryReader { geo in
                 Color.clear
-                    .onChange(of: dragOffset) { _ in
-                        if isDragging {
-                            let frame = geometry.frame(in: .global)
-                            dropLocation = CGPoint(
-                                x: frame.midX + dragOffset.width,
-                                y: frame.midY + dragOffset.height
-                            )
-                        }
+                    .onAppear {
+                        viewModel.updateFrame(geo.frame(in: .global), for: index)
                     }
             }
         )
-        .gesture(
-            container.elements.isEmpty ? nil :
-            DragGesture(minimumDistance: 3)
-                .onChanged { value in
-                    dragOffset = value.translation
-                    if !isDragging {
-                        isDragging = true
-                    }
-                }
-                .onEnded { value in
-                    isDragging = false
-                    
-                    if let dropLocation = dropLocation,
-                       let targetIndex = viewModel.containerIndex(at: dropLocation) {
-                        viewModel.pour(from: index, to: targetIndex)
-                    }
-                    
-                    withAnimation(.spring()) {
-                        dragOffset = .zero
-                    }
-                    dropLocation = nil
-                }
-        )
-
-        .animation(.spring(), value: dragOffset)
     }
 }

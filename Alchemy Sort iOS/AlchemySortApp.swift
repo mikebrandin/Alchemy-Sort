@@ -15,3 +15,7 @@ struct AlchemySortApp: App {
         }
     }
 }
+
+#Preview {
+    GameView()
+}
