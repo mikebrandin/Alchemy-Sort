@@ -9,13 +9,31 @@ import SwiftUI
 
 @main
 struct AlchemySortApp: App {
+    @State private var selectedLevel: Level?
+    
     var body: some Scene {
         WindowGroup {
-            GameView() // Your SwiftUI root view
+            if let level = selectedLevel {
+                GameView(level: level, selectedLevel: $selectedLevel)
+            } else {
+                LevelsView(selectedLevel: $selectedLevel)
+            }
+        }
+    }
+}
+
+struct AlchemySortAppPreview: View {
+    @State private var selectedLevel: Level?
+    
+    var body: some View {
+        if let level = selectedLevel {
+            GameView(level: level, selectedLevel: $selectedLevel)
+        } else {
+            LevelsView(selectedLevel: $selectedLevel)
         }
     }
 }
 
 #Preview {
-    GameView()
+    AlchemySortAppPreview()
 }
