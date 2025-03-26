@@ -39,9 +39,25 @@ class GameViewModel: ObservableObject {
     @Published var moves: Int = 0
     @Published var score: Int = 0
     @Published var selectedContainerIndex: Int? = nil
+    @Published var pouringState: PouringState?
     var containerFrames: [CGRect] = []
     private let maxCapacity = 4
     private let totalcontainers = 6
+    
+    struct PouringState {
+        let sourceIndex: Int
+        let targetIndex: Int
+        var phase: PouringPhase = .starting
+        let elementsToPour: [Element]
+    }
+    
+    enum PouringPhase {
+        case starting    // Initial state
+        case tilting    // Moving to pour position
+        case pouring    // Transferring elements
+        case returning  // Moving back to original position
+        case completed  // Animation complete
+    }
     
     // Scoring constants
     private let completeContainerPoints = 1000
@@ -203,20 +219,51 @@ class GameViewModel: ObservableObject {
         let availableSpace = maxCapacity - targetContainer.elements.count
         let pourCount = min(matchingCount, availableSpace)
         
-        // Create new array to trigger SwiftUI update
-        var newContainers = containers
-        let elementsToPour = Array(newContainers[sourceIndex].elements.suffix(pourCount))
-        newContainers[sourceIndex].elements.removeLast(pourCount)
-        newContainers[targetIndex].elements.append(contentsOf: elementsToPour)
+        // Get elements to pour
+        let elementsToPour = Array(containers[sourceIndex].elements.suffix(pourCount))
         
-        // Animate the change
-        withAnimation(.spring()) {
-            containers = newContainers
+        // Start pouring animation
+        pouringState = PouringState(
+            sourceIndex: sourceIndex,
+            targetIndex: targetIndex,
+            elementsToPour: elementsToPour
+        )
+        
+        // Sequence the pouring animation
+        Task { @MainActor in
+            // Move to pouring position
+            withAnimation(.easeInOut(duration: 0.3)) {
+                pouringState?.phase = .tilting
+            }
+            
+            try? await Task.sleep(nanoseconds: 300_000_000) // 0.3 seconds
+            
+            // Pour the elements
+            withAnimation(.easeInOut(duration: 0.2)) {
+                pouringState?.phase = .pouring
+                // Remove elements from source
+                containers[sourceIndex].elements.removeLast(pourCount)
+                // Add to target
+                containers[targetIndex].elements.append(contentsOf: elementsToPour)
+            }
+            
+            try? await Task.sleep(nanoseconds: 200_000_000) // 0.2 seconds
+            
+            // Return to original position
+            withAnimation(.easeInOut(duration: 0.3)) {
+                pouringState?.phase = .returning
+            }
+            
+            try? await Task.sleep(nanoseconds: 300_000_000) // 0.3 seconds
+            
+            // Complete the animation
+            pouringState?.phase = .completed
+            pouringState = nil
             moves += 1
+            
+            updateScore()
+            checkLevelCompletion()
         }
-        
-        updateScore()
-        checkLevelCompletion()
     }
     
     private func validatePour(from: Int, to: Int) -> Bool {
