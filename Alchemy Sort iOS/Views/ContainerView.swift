@@ -2,6 +2,7 @@ import SwiftUI
 
 struct ContainerView: View {
     @EnvironmentObject var viewModel: GameViewModel
+    
     let container: Container
     let index: Int
     
@@ -22,35 +23,30 @@ struct ContainerView: View {
         viewModel.pouringState?.targetIndex == index
     }
     
-    private var pourRotation: Double {
+    private var pourProgress: Double {
         guard let pouringState = viewModel.pouringState, isPouring else { return 0 }
-        
-        // Determine rotation direction based on whether target is to the left or right
-        let rotationDirection: Double
-        if let sourceFrame = viewModel.containerFrames[safe: pouringState.sourceIndex],
-           let targetFrame = viewModel.containerFrames[safe: pouringState.targetIndex] {
-            rotationDirection = targetFrame.midX > sourceFrame.midX ? 1.0 : -1.0
-        } else {
-            rotationDirection = 1.0
-        }
         
         switch pouringState.phase {
         case .starting:
             return 0
-        case .tilting, .pouring:
-            return 80.0 * rotationDirection // Tilt towards target
-        case .returning, .completed:
+        case .tilting:
+            return 0.2  // Reduced from 0.3
+        case .pouring:
+            return 0.4  // Reduced from 1.0
+        case .returning:
+            return 0.2  // Reduced from 0.3
+        case .completed:
             return 0
         }
     }
-    
+
     private var liquidRotation: Double {
         guard let pouringState = viewModel.pouringState, isPouring else { return 0 }
         
         // Match container rotation direction
         let rotationDirection: Double
         if let sourceFrame = viewModel.containerFrames[safe: pouringState.sourceIndex],
-           let targetFrame = viewModel.containerFrames[safe: pouringState.targetIndex] {
+        let targetFrame = viewModel.containerFrames[safe: pouringState.targetIndex] {
             rotationDirection = targetFrame.midX > sourceFrame.midX ? 1.0 : -1.0
         } else {
             rotationDirection = 1.0
@@ -60,12 +56,39 @@ struct ContainerView: View {
         case .starting:
             return 0
         case .tilting, .pouring:
-            return 100.0 * rotationDirection // Tilt liquid more than container
+            return 15.0 * rotationDirection // Reduced from 80.0 for better visibility
         case .returning, .completed:
             return 0
         }
     }
-    
+
+    private var pourRotation: Double {
+        guard let pouringState = viewModel.pouringState else { return 0 }
+        
+        // Determine rotation direction based on source and target positions
+        let rotationDirection: Double
+        if let sourceFrame = viewModel.containerFrames[safe: pouringState.sourceIndex],
+        let targetFrame = viewModel.containerFrames[safe: pouringState.targetIndex] {
+            rotationDirection = targetFrame.midX > sourceFrame.midX ? 1.0 : -1.0
+        } else {
+            rotationDirection = 1.0
+        }
+        
+        // Return rotation angle based on pouring phase
+        switch pouringState.phase {
+        case .starting:
+            return 0
+        case .tilting:
+            return isPouring ? (80.0 * rotationDirection) : 0  // Reduced from 80.0
+        case .pouring:
+            return isPouring ? (80.0 * rotationDirection) : 0  // Reduced from 80.0
+        case .returning:
+            return 0
+        case .completed:
+            return 0
+        }
+    }
+
     private func calculateHorizontalOffset(sourceFrame: CGRect, targetFrame: CGRect) -> CGFloat {
         let sourceCenter = sourceFrame.midX
         let targetCenter = targetFrame.midX
@@ -134,10 +157,10 @@ struct ContainerView: View {
         .rotationEffect(.degrees(pourRotation), anchor: .bottom)
         .offset(position)
         .scaleEffect(viewModel.selectedContainerIndex == index ? 1.1 : 1.0)
-        .overlay(
-            RoundedRectangle(cornerRadius: 100)
-                .stroke(viewModel.selectedContainerIndex == index ? Color.yellow : Color.clear, lineWidth: 3)
-        )
+//        .overlay(
+//            RoundedRectangle(cornerRadius: 100)
+//                .stroke(viewModel.selectedContainerIndex == index ? Color.yellow : Color.clear, lineWidth: 3)
+//        )
         .animation(.easeInOut(duration: 0.2), value: viewModel.selectedContainerIndex == index)
         .onTapGesture {
             viewModel.handleContainerTap(at: index)
